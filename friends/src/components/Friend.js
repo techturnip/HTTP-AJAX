@@ -6,7 +6,7 @@ export default class Friend extends Component {
     const { name, age, email } = this.props.friend;
 
     return (
-      <Card>
+      <Card className="hoverable">
         <div className="flex">
           <div>
             <h5>{name}</h5>
@@ -17,8 +17,12 @@ export default class Friend extends Component {
           </div>
 
           <div className="interaction">
-            <i className="small material-icons">edit</i>
-            <i className="small material-icons">delete</i>
+            <a className="teal-text" href="#">
+              <i className="small material-icons">edit</i>
+            </a>
+            <a className="red-text text-lighten-2" href="#">
+              <i className="small material-icons">delete</i>
+            </a>
           </div>
         </div>
       </Card>

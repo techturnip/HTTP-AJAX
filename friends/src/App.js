@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import { Container } from "react-materialize";
 import axios from "axios";
+
 import Header from "./components/Header";
 import FriendList from "./components/FriendList";
-import { Container } from "react-materialize";
+import AddFriend from "./components/AddFriend";
+
 import "materialize-css/dist/css/materialize.min.css";
 import "./App.css";
 
@@ -22,12 +26,27 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  updateFriends = friendData => {
+    this.setState({ friendData });
+  };
+
   render() {
     return (
       <div className="App">
         <Header />
         <Container>
-          <FriendList friends={this.state.friendData} />
+          <Route
+            exact
+            path="/"
+            render={() => <FriendList friends={this.state.friendData} />}
+          />
+          <Route
+            exact
+            path="/friend/add"
+            render={props => (
+              <AddFriend {...props} updateFriends={this.updateFriends} />
+            )}
+          />
         </Container>
       </div>
     );
