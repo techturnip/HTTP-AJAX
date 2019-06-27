@@ -14,9 +14,8 @@ export default class Form extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  addFriend = e => {
+  submitHandler = e => {
     e.preventDefault();
-
     const { name, age, email } = this.state;
     const payload = {
       name,
@@ -24,27 +23,16 @@ export default class Form extends Component {
       email
     };
 
-    axios
-      .post("http://localhost:5000/friends", payload)
-      .then(res => {
-        this.props.updateFriends(res.data);
-
-        this.setState({
-          errMsg: null
-        });
-        this.props.history.push("/");
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    if (this.props.addFriend) {
+      this.props.addFriend(payload);
+    }
   };
 
   render() {
-    console.log(this.props);
     const { name, age, email } = this.state;
     return (
       <Card>
-        <form onSubmit={this.addFriend}>
+        <form onSubmit={this.submitHandler}>
           <div className="input-field">
             <input
               type="text"
