@@ -35,12 +35,12 @@ export default class Friend extends Component {
             <Link to={`/friend/edit/${id}`} className="teal-text" href="#">
               <i className="small material-icons">edit</i>
             </Link>
-            <a
+            <span
               onClick={this.deleteFriend}
               className="red-text text-lighten-2 interaction-link"
             >
               <i className="small material-icons">delete</i>
-            </a>
+            </span>
           </div>
         </div>
       </Card>
