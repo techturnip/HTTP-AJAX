@@ -13,8 +13,6 @@ export default class EditFriend extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
     const friend = this.props.friends.find(friend => friend.id === Number(id));
-    console.log(friend);
-    console.log(this.props.friends);
 
     if (friend) {
       this.setState({

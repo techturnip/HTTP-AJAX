@@ -16,8 +16,6 @@ export default class Friend extends Component {
   };
 
   render() {
-    console.log(this.props.friend);
-
     const { name, age, email, id } = this.props.friend;
 
     return (
