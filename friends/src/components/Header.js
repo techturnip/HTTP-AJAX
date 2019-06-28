@@ -10,8 +10,7 @@ export default class Header extends Component {
         centerLogo
         alignLinks="right"
       >
-        <NavLink to="/friend/add">Add Friend</NavLink>
-        <NavLink>Components</NavLink>
+        <NavLink to="/friend/add">+ Add Friend</NavLink>
       </Navbar>
     );
   }
