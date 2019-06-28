@@ -10,6 +10,16 @@ export default class Form extends Component {
     errMsg: null
   };
 
+  componentDidMount() {
+    console.log(this.props);
+    if (this.props.match.params.id) {
+      const id = this.props.match.params.id;
+
+      // axios
+      //   .get(`http://localhost:5000/friends/${}`)
+    }
+  }
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -23,8 +33,11 @@ export default class Form extends Component {
       email
     };
 
+    // Check whether adding friend or editing friend
     if (this.props.addFriend) {
       this.props.addFriend(payload);
+    } else if (this.props.editFriend) {
+      this.props.editFriend(payload);
     }
   };
 

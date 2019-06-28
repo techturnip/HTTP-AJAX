@@ -1,9 +1,24 @@
 import React, { Component } from "react";
-import { Row, Col, Card } from "react-materialize";
+import { Link } from "react-router-dom";
+import { Card } from "react-materialize";
+import axios from "axios";
 
 export default class Friend extends Component {
+  deleteFriend = () => {
+    const { id } = this.props.friend;
+
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+      .then(res => this.props.updateFriends(res.data))
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
-    const { name, age, email } = this.props.friend;
+    console.log(this.props.friend);
+
+    const { name, age, email, id } = this.props.friend;
 
     return (
       <Card className="hoverable">
@@ -17,10 +32,13 @@ export default class Friend extends Component {
           </div>
 
           <div className="interaction">
-            <a className="teal-text" href="#">
+            <Link to={`/friend/edit/${id}`} className="teal-text" href="#">
               <i className="small material-icons">edit</i>
-            </a>
-            <a className="red-text text-lighten-2" href="#">
+            </Link>
+            <a
+              onClick={this.deleteFriend}
+              className="red-text text-lighten-2 interaction-link"
+            >
               <i className="small material-icons">delete</i>
             </a>
           </div>

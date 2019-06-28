@@ -6,6 +6,7 @@ import axios from "axios";
 import Header from "./components/Header";
 import FriendList from "./components/FriendList";
 import AddFriend from "./components/AddFriend";
+import EditFriend from "./components/EditFriend";
 
 import "materialize-css/dist/css/materialize.min.css";
 import "./App.css";
@@ -38,13 +39,30 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={() => <FriendList friends={this.state.friendData} />}
+            render={props => (
+              <FriendList
+                {...props}
+                friends={this.state.friendData}
+                updateFriends={this.updateFriends}
+              />
+            )}
           />
           <Route
             exact
             path="/friend/add"
             render={props => (
               <AddFriend {...props} updateFriends={this.updateFriends} />
+            )}
+          />
+          <Route
+            path="/friend/edit/:id"
+            exact
+            render={props => (
+              <EditFriend
+                {...props}
+                friends={this.state.friendData}
+                updateFriends={this.updateFriends}
+              />
             )}
           />
         </Container>

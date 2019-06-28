@@ -12,7 +12,12 @@ export default class FriendList extends Component {
       <div>
         <h3>My Friends</h3>
         {friends.map(friend => (
-          <Friend key={friend.id} friend={friend} />
+          <Friend
+            {...this.props}
+            key={friend.id}
+            friend={friend}
+            updateFriends={this.props.updateFriends}
+          />
         ))}
       </div>
     );
