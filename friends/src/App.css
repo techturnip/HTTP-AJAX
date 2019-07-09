@@ -1,0 +1,24 @@
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex div {
+  height: 100%;
+  flex: 1;
+}
+
+.flex div h5 {
+  margin: 0;
+}
+
+.interaction {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.interaction .interaction-link {
+  cursor: pointer;
+}
